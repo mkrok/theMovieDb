@@ -1,0 +1,70 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+header {
+    height: 64px;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+    border-bottom: 1px solid white;
+}
+
+.fit {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.center {
+  display: block;
+  margin: auto;
+}
+
+#logo {
+    float: left;
+    line-height: 60px;
+    height: 60px;
+    margin:2px;
+}
+
+#title {
+    max-width: 1024px;
+    width: 100%;
+    margin: auto;
+}
+
+#query_txt {
+    max-width: 1024px;
+    margin: auto;
+    width: 90%;
+    height: 40px;
+    font-size: 1.2em;
+    color: grey;
+    padding-left: 10px;
+    font-family: FontAwesome,arial;
+    margin: 0;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+#db_query {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#results {
+    max-width: 1024px;
+    width: 100%;
+    margin: auto;
+    padding: 0;
+    margin-top: 0;
+}

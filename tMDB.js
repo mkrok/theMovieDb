@@ -4,7 +4,6 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const port = process.env.PORT || 9591;
 const theMovieDbPlugin = require('./js/theMovieDbPlugin');
-
 function parse (txt) {
     return txt.trim().replace(/\s+/g, '+');
 }
@@ -21,7 +20,7 @@ app.get ('/', function (req, res) {
 io.on ('connection', socket => {
     console.log (socket.id + ' connected');
     socket.on ('the_movie_db_query', query => {
-        console.log('The Movie DB query: ' + parse(query) + ' from: ' + socket.id);
-        theMovieDbPlugin (parse(query), socket);
+        console.log('The Movie DB query: ' + parse (query) + ' from: ' + socket.id);
+        theMovieDbPlugin (parse (query), socket);
     });
 });

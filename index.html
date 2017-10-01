@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/jquery.min.js"></script>
   </head>
@@ -17,8 +18,13 @@
     <form id="db_query" action=''>
         <input class="fit center" id="query_txt" type="text" autocomplete="off" maxlength="50" spellcheck="false" placeholder="&#xf002;   Search for a movie or person" style="font-family: FontAwesome, Helvetica">
     </form>
-    <main id="results" class="fit center">
-
+    <main id=results class="fit center">
+        <article id="error"></article>
+        <article id="movie"></article>
+        <article id="tv"></article>
+        <article id="collection"></article>
+        <article id="person"></article>
+        <article id="company"></article>
     </main>
     <script src="/js/movie_db.js"></script>
   </body>

@@ -119,3 +119,9 @@ header {
     margin-bottom: 30px;
     overflow: auto;
 }
+
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+    .media {
+        float: initial;
+    }
+}

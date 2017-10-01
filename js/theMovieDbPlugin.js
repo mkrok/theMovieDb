@@ -1,5 +1,6 @@
 module.exports = function (query, socket) {
     const https = require('https');
+    const refiner = require('./refiner.js');
     const API_KEY = 'a51683333b42879def31a2678c9b371c';
     const mdb_gets =  [
         'movie',
@@ -27,22 +28,13 @@ module.exports = function (query, socket) {
                 data += chunk;
             });
             http_res.on('end', () => {
-                console.log(JSON.parse(data));
+                //console.log(JSON.parse(data));
                 if ( JSON.parse(data).results) {
                     if (JSON.parse(data).results.length > 0) {
-                        if (socket) {
-                            socket.emit('the_movie_db_results', {media_type: mdb_gets[i], results: JSON.parse(data).results} );
-                        } else {
-                            return data;
-                        }
+                        socket.emit('the_movie_db_results', refiner({media_type: mdb_gets[i], results: JSON.parse(data).results}) );
                     }
                 } else {
-                    if (socket) {
-                        socket.emit('the_movie_db_error', 'Something went wrong, try again');
-                    } else {
-                        return 'Error';
-                    }
-
+                    socket.emit('the_movie_db_error', 'Something went wrong, try again');
                 }
             });
         });

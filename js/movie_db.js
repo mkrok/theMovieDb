@@ -42,7 +42,7 @@
 
         socket.on('the_movie_db_error',data => {
             document.getElementById('error').style.display = 'block';
-            document.getElementById('error').innerHTML = '<p style="font-size: 2em; color: white;">' + data + '</p>';
+            document.getElementById('error').innerHTML = `<p style="font-size: 2em; color: white;">${data}</p>`;
         });
 
         socket.on('the_movie_db_results', data => {
@@ -50,50 +50,54 @@
                 document.getElementById('movie').style.display = 'block';
                 document.getElementById('movie').innerHTML = '<p style="font-size: 4em; color: white;">Movies</p>';
                 for (let i = data.results.length; i--;) {
-                    document.getElementById('movie').innerHTML += '<div class="media"><a class="medialink" id="' + data.results[i].overview + '">' +
-                    '<object width="185" height="278" class="fit center" data="https://image.tmdb.org/t/p/w185_and_h278_bestv2/' +
-                    data.results[i].poster_path + '"><img width="185" height="278" class="fit center" src="/img/error.png" ></img></object></a><div class="desc">' +
-                    data.results[i].title.substr(0,23) + '</div><p class="overview">' + data.results[i].overview + '</p></div>';
+                    document.getElementById('movie').innerHTML += `<div class="media"><a class="medialink">
+                    <object width="185" height="278" class="fit center" data="https://image.tmdb.org/t/p/w185_and_h278_bestv2/${data.results[i].poster_path}">
+                    <img class="fit center" src="/img/error.png" width="185" height="278"></img>
+                    </object></a><div class="desc">${data.results[i].title.substr(0,23)}</div>
+                    <p class="overview">${data.results[i].overview}</p></div>`;
                 }
             } else if (data.media_type === 'tv') {
                 document.getElementById('tv').style.display = 'block';
                 document.getElementById('tv').innerHTML = '<p style="font-size: 4em; color: white;">TV</p>';
                 for (let i = data.results.length; i--;) {
-                    document.getElementById('tv').innerHTML += '<div class="media"><a class="medialink">' +
-                    '<object width="185" height="278" class="fit center" data="https://image.tmdb.org/t/p/w185_and_h278_bestv2/' +
-                    data.results[i].poster_path + '"><img class="fit center" src="/img/error.png" width="185" height="278"></img></object></a><div class="desc">' +
-                    data.results[i].name.substr(0,23) + '</div><p class="overview">' + data.results[i].overview + '</p></div>';
+                    document.getElementById('tv').innerHTML += `<div class="media"><a class="medialink">
+                    <object width="185" height="278" class="fit center"
+                    data="https://image.tmdb.org/t/p/w185_and_h278_bestv2/${data.results[i].poster_path}">
+                    <img class="fit center" src="/img/error.png" width="185" height="278"></img>
+                    </object></a><div class="desc">${data.results[i].name.substr(0,23)}</div>
+                    <p class="overview">${data.results[i].overview}</p></div>`;
                 }
             } else if (data.media_type === 'collection') {
                 document.getElementById('collection').style.display = 'block';
                 document.getElementById('collection').innerHTML = '<p style="font-size: 4em; color: white;">Collection</p>';
                 for (let i = data.results.length; i--;) {
-                    document.getElementById('collection').innerHTML += '<div class="media"><a class="medialink">' +
-                    '<object width="185" height="278" class="fit center" data="https://image.tmdb.org/t/p/w185_and_h278_bestv2/' +
-                    data.results[i].poster_path + '"><img class="fit center" src="/img/error.png" width="185" height="278"></img></object></a><div class="desc">' +
-                    data.results[i].name.substr(0,23) + '</div></div>';
+                    document.getElementById('collection').innerHTML += `<div class="media"><a class="medialink">
+                    <object width="185" height="278" class="fit center"
+                    data="https://image.tmdb.org/t/p/w185_and_h278_bestv2/${data.results[i].poster_path}">
+                    <img class="fit center" src="/img/error.png" width="185" height="278"></img>
+                    </object></a><div class="desc">${data.results[i].name.substr(0,23)}</div></div>`;
                 }
             } else if (data.media_type === 'person') {
                 document.getElementById('person').style.display = 'block';
                 document.getElementById('person').innerHTML = '<p style="font-size: 4em; color: white;">Person</p>';
                 for (let i = data.results.length; i--;) {
-                    document.getElementById('person').innerHTML += '<div class="media"><a class="medialink">' +
-                    '<object width="185" height="278" class="fit center" data="https://image.tmdb.org/t/p/w185_and_h278_bestv2/' +
-                    data.results[i].profile_path + '"><img class="fit center" src="/img/error.png" width="185" height="278"></img></object></a><div class="desc">' +
-                    data.results[i].name.substr(0,23) + '</div></div>';
+                    document.getElementById('person').innerHTML += `<div class="media"><a class="medialink">
+                    <object width="185" height="278" class="fit center"
+                    data="https://image.tmdb.org/t/p/w185_and_h278_bestv2/${data.results[i].profile_path}">
+                    <img class="fit center" src="/img/error.png" width="185" height="278"></img>
+                    </object></a><div class="desc">${data.results[i].name.substr(0,23)}</div></div>`;
                 }
             } else if (data.media_type === 'company') {
                 document.getElementById('company').style.display = 'block';
                 document.getElementById('company').innerHTML = '<p style="font-size: 4em; color: white;">Company</p>';
                 for (let i = data.results.length; i--;) {
-                    document.getElementById('company').innerHTML += '<div class="media"><a class="medialink">' +
-                    '<object width="185" height="278" class="fit center" data="https://image.tmdb.org/t/p/w185_and_h278_bestv2/' +
-                    data.results[i].logo_path + '"><img class="fit center" src="/img/error.png" width="185" height="278"></img></object></a><div class="desc">' +
-                    data.results[i].name.substr(0,23) + '</div></div>';
+                    document.getElementById('company').innerHTML += `<div class="media"><a class="medialink">
+                    <object width="185" height="278" class="fit center"
+                    data="https://image.tmdb.org/t/p/w185_and_h278_bestv2/${data.results[i].logo_path}">
+                    <img class="fit center" src="/img/error.png" width="185" height="278"></img>
+                    </object></a><div class="desc">${data.results[i].name.substr(0,23)}</div></div>`;
                 }
             }
-
         });
-
     });
 }(jQuery));
